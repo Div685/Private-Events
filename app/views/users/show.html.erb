@@ -1,9 +1,5 @@
 <%= @user.name %>
-
-<% if @event.nil? %>
-    'events is not nil'
-<% else %>
-<% @events.each do |event| %>
-    <%= event.title %>
-<% end %>
+<br >
+<% @user.events.each do |e| %>
+    <%= e.title %>
 <% end %>

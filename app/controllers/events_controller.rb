@@ -10,14 +10,14 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = current_user.created_events.build(event_params)
+    @event = current_user.events.build(event_params)
 
     respond_to do |format|
       if @event.save
-        flash[:success] = "Event successfully created!"
-        redirect_to root_path
+        format.html { redirect_to current_user, notice: 'Event was successfully created.' }
       else
         format.html { render :new }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
