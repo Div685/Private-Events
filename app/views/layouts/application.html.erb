@@ -29,7 +29,7 @@
     <nav class="navbar navbar-expand-lg align-items-center bg-primary d-flex justify-content-between">
       <div class="logo text-white">
            
-          <%= link_to 'U-Events', root_path, class: " text-white font-weight-bold h3" %>
+          <%= link_to 'U-Events', root_path, class: " text-white font-weight-bold h3 text-decoration-none font-italic" %>
       </div>
       <div class="nav-right d-flex flex-row align-items-center">
         <% if current_user %>
@@ -37,8 +37,12 @@
             <%= link_to 'Create Event', new_event_path, class: "text-decoration-none" %>
           </div>
 
-          <div class="btn btn-light ml-2" >
-            <%= link_to 'Sign Out', sign_out_path, class: "" %>
+          <div class="text-white mr-2">
+            <%= link_to current_user.name, edit_event_path, class: "text-white font-weight-bold text-decoration-none" %>
+          </div>
+
+          <div class="ml-2" >
+            <%= link_to 'Sign Out', sign_out_path, class: "text-white font-weight-bold text-decoration-none" %>
           </div>
         
         <% else %>

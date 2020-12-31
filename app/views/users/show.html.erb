@@ -1,5 +1,11 @@
 <%= @user.name %>
 <br >
+
+<p class="h2 text-primary font-weight-bold ">Upcoming Events</p>
+
+
 <% @user.events.each do |e| %>
     <%= e.title %>
 <% end %>
+
+<p class="h2 text-primary font-weight-bold ">Past Events</p>
