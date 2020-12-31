@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
-  get 'login' => 'sessions#new', as: 'login'
-  get 'sessions/create'
-  get 'sessions/destroy'
+  get 'sign_in' => 'sessions#new', as: 'sign_in'
+  get 'sign_out' => 'sessions#destroy', as: 'sign_out'
+  get 'sign_up' => 'users#new', as: 'sign_up'
   resources :users, only: [:index, :new, :create, :show]
   root 'users#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
