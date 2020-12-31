@@ -1,0 +1,17 @@
+<div class="main">
+    <h1 class="">Log In</h1>
+    <div class="login-field">
+        <%= form_with url: sessions_path, local: true do |f| %>
+            <div>
+                <%= f.label :name, class: "form_label" %>
+                <%= f.text_field :name, class: '' %>
+            </div>
+            <div>
+                <%= f.submit 'Log In', class: 'btn btn-primary' %>
+            </div>
+            <div>
+                <%= link_to 'Sign Up', class: '' %>
+            </div>
+        <% end %>
+    </div>
+</div>

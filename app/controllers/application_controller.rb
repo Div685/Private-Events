@@ -7,7 +7,8 @@ class ApplicationController < ActionController::Base
 # a Rails application; logging in sets the session value and
 # logging out removes it.
   def current_user
-    @_current_user ||= session[:current_user_id] &&
-    User.find_by(id: session[:current_user_id])
+    User.where(id: session[:current_user_id]).first
   end
+
+  helper_method :current_user
 end
