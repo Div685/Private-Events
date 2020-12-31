@@ -16,8 +16,8 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         session[:current_user_id] = @user.id
-        format.html { redirect_to root_path, notice: 'User was Successfully created' }
-        format.json { render root, status: :created,  location: @user }
+        format.html { redirect_to @user, notice: 'User was Successfully created' }
+        format.json { render :show, status: :created,  location: @user }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -26,13 +26,14 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user
-    @user = User.find(params[:id])
+    
   end
 
   # Only allow a list of trusted parameters through.
