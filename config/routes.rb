@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  # get 'events/new'
   resources :users, only: [:index, :new, :create, :show]
   resources :sessions, only: [:new, :create, :destroy]
-  
+  resources :events
+
   get 'sign_in' => 'sessions#new', as: 'sign_in'
   get 'sign_out' => 'sessions#destroy', as: 'sign_out'
   get 'sign_up' => 'users#new', as: 'sign_up'
