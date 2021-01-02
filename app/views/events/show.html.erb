@@ -9,4 +9,8 @@
     <div>
         <%= @event.creator.name %>
     </div>
+
+    <% @event.attendees.each |e| %>
+        <%= attendee.name %>
+    <% end %> 
 </div>
