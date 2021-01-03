@@ -1,16 +1,21 @@
-<div>
-    <div>
+<img src="https://assets.simpleviewinc.com/simpleview/image/fetch/c_limit,q_75,w_1200/https://assets.simpleviewinc.com/simpleview/image/upload/crm/sanmateoca/shutterstock_61104537504_8ef67d97-5056-a36a-0b9f5fc892eae781.jpg" alt="img" class="card-img-top img-show">
+<div class="main-event p-5 container ">
+    <div class="text-secondary text-capitalize h3 ">
         <%= @event.title %>
     </div>
-    <div>
+    <div class="text">
         <%= @event.description %>
     </div>
 
-    <div>
-        <%= @event.creator.name %>
+    <div class="my-3 ">
+        <p class="h5 text-primary">Author:  <%= @event.creator.name %> </p>
     </div>
 
-    <%# <% @event.attendees.each |e| %>
-        <%# <%= attendee.name %> %>
-    <%# <% end %>  %> %>
+    <div class="attendees">
+        <h3>List of attendees</h3>
+        <div class="list-attendees">
+            
+        </div>
+    </div>
 </div>
+

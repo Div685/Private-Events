@@ -1,3 +1,17 @@
-<% @events.each do |e| %>
-    <%= e.title %>
-<% end %>
+
+
+<div class="upcoming-events p-3">
+    <h1 class="text-Uppercase text-secondary ml-5 mb-n3">Upcoming Events</h1>
+    <% if @upcomming_events %>
+        <%= render 'upcoming-events' %>
+    <% end %>
+
+</div>
+<div class="past-events">
+
+    <h1 class="text-Uppercase text-secondary ml-5 mb-n3">Past Events </h1>
+
+    <% if @past_events %>
+       <%= render 'past-events' %>
+    <% end %>
+</div>
