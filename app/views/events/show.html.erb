@@ -1,21 +1,42 @@
 <img src="https://assets.simpleviewinc.com/simpleview/image/fetch/c_limit,q_75,w_1200/https://assets.simpleviewinc.com/simpleview/image/upload/crm/sanmateoca/shutterstock_61104537504_8ef67d97-5056-a36a-0b9f5fc892eae781.jpg" alt="img" class="card-img-top img-show">
-<div class="main-event p-5 container ">
-    <div class="text-secondary text-capitalize h3 ">
-        <%= @event.title %>
+<div class="main-event p-5 container d-flex ">
+    <div class="left col-8">
+        <div class="my-3 ">
+            <p class="h5 text-primary">Hosted By:  <%= @event.creator.name %> </p>
+        </div>
+
+        <div class="text-dark text-uppercase h3 ">
+            <%= @event.title %>
+        </div>
+        
+        <div class="text">
+            <h3 class="my-3">About Event</h3>
+            <%= @event.description %>
+        </div>
     </div>
-    <div class="text">
-        <%= @event.description %>
+    
+    <div class="right card col-4">
+        <div class="date d-flex">
+            <span>
+                <i class="far fa-calendar-check"></i>
+                 <%= @event.date %>
+            </span>   
+            <p class="align-items-center d-flex justify-content-center">
+               
+            </p>
+        </div>
+        <div class="date">    
+        <i class="fas fa-map-marker-alt h-3"></i>    
+          <%= @event.location %>
+        </div>
     </div>
 
-    <div class="my-3 ">
-        <p class="h5 text-primary">Author:  <%= @event.creator.name %> </p>
-    </div>
+</div>
 
-    <div class="attendees">
+<div class="attendees">
         <h3>List of attendees</h3>
         <div class="list-attendees">
             
         </div>
     </div>
-</div>
 
