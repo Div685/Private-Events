@@ -28,7 +28,12 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @created_event = @user.events
-
+    @upcoming = Event.upcoming.select do |event|
+      event.attendances.where('status = ?', true).where('attendee_id = ?', @user.id)
+    end
+    @past = Event.past.select do |event|
+      event.attendances.where('status = ?', true).where('attendee_id = ?', @user.id)
+    end
   end
 
   private

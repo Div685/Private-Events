@@ -1,9 +1,17 @@
-<%= @user.name %>
+
+<div class="author d-flex flex-column justify-content-center align-items-center h2 text-capitalize p-3 bg-light">
+    <img src="https://thewritelife.com/wp-content/uploads/2014/12/how-to-become-a-technical-writer.jpg" alt="author" class="author-img">
+    <a href="" class="mt-3 text-decoration-none">
+        <%= @user.name %>
+    </a>
+</div>
+
 <br >
 
 <div class="created-event">
-    <h1 class="text-Uppercase text-secondary ml-5 mb-n3">Created Events</h1>
+    <h1 class="text-uppercase text-primary ml-5 mb-n3">Created Events</h1>
         <div class="grid-post">
+        <% if @created_event.any? %>
             <% @created_event.each do |e| %>
                 <div class="card box">
                     <img src="https://assets.simpleviewinc.com/simpleview/image/fetch/c_limit,q_75,w_1200/https://assets.simpleviewinc.com/simpleview/image/upload/crm/sanmateoca/shutterstock_61104537504_8ef67d97-5056-a36a-0b9f5fc892eae781.jpg" alt="img" class="card-img-top">
@@ -18,9 +26,36 @@
                     </div>
                 </div>
             <% end %>
+        <% else %>
+            <div class="d-flex flex-column">
+                <p>User has Not Created any Events</p>
+                <%= link_to "Create Event", new_event_path, class: "btn btn-primary w-50"  %>
+            </div>
+        <% end %>
 </div>
         
 </div>
 
 
-<h1 class="text-Uppercase text-secondary ml-5 mb-n3">Attended Events</h1>
+<h1 class="text-uppercase text-primary ml-5 mb-n3">Attended Events</h1>
+
+<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <% @upcoming.each do |event| %>
+              <div class="row mt-4 event p-4">
+                <div class="col-md-4">
+                  <img class="img-fluid" src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F116837057%2F321310090885%2F1%2Foriginal.20201105-075340?h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=50a847fbce8bbdfabb88e2e9c1b7c3fa" alt="">
+                </div>
+                <div class="col-md-8">
+                  <div class="date">
+                    <span class="text-uppercase text-danger"><%= event.date %></span>
+                  </div>
+                  <div class="event-title">
+                    <h3 class="font-weight-bold">
+                      <%= link_to event.title, event_path(event), class: "text-dark" %>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+
+          </div>
