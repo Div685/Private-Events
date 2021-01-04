@@ -26,6 +26,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @attendees = User.find(@event.attendances.invited.map(&:user_id))
   end
 
 

@@ -1,39 +1,49 @@
 <img src="https://assets.simpleviewinc.com/simpleview/image/fetch/c_limit,q_75,w_1200/https://assets.simpleviewinc.com/simpleview/image/upload/crm/sanmateoca/shutterstock_61104537504_8ef67d97-5056-a36a-0b9f5fc892eae781.jpg" alt="img" class="card-img-top img-show">
-<div class="main-event p-5 container d-flex ">
-    <div class="left col-8">
-        <div class="my-3 ">
-            <p class="h5 text-primary">Hosted By:  <%= @event.creator.name %> </p>
+<div class="main-event p-5 container">
+
+    <div class="right card col-4 box p-3 float-right ml-2 h-50">
+        <div class="date d-flex">
+            <span class="h3">
+                <i class="far fa-calendar-check text-primary"></i>
+                 <%= @event.date %>
+            </span>  
+        </div>
+        <div class="date my-3"> 
+            <span>
+                <i class="fas fa-map-marker-alt h-3 text-primary"></i>    
+                <%= @event.location %>
+            </span>   
         </div>
 
-        <div class="text-dark text-uppercase h3 ">
+        <div class="join-event">
+            <% if current_user == @event.creator %>
+                <%= link_to "Invite People", attendances_path(event_id: @event.id), class: "btn btn-primary text-uppercase" %>
+            <% else %>
+                <%= link_to "Join Event", attendances_path(event_id: @event.id), class: "btn btn-primary text-uppercase" %>
+            <% end %>
+        </div>
+    </div>
+
+    <div class="left col-8">
+        <div class="my-3 ">
+            <p class="h5 text-dark">Hosted By:  <%= @event.creator.name %> </p>
+        </div>
+
+        <div class="text-primary text-uppercase h3 ">
             <%= @event.title %>
         </div>
         
         <div class="text">
-            <h3 class="my-3">About Event</h3>
+            <h3 class="my-3 h5">About Event</h3>
             <%= @event.description %>
         </div>
     </div>
     
-    <div class="right card col-4">
-        <div class="date d-flex">
-            <span>
-                <i class="far fa-calendar-check"></i>
-                 <%= @event.date %>
-            </span>   
-            <p class="align-items-center d-flex justify-content-center">
-               
-            </p>
-        </div>
-        <div class="date">    
-        <i class="fas fa-map-marker-alt h-3"></i>    
-          <%= @event.location %>
-        </div>
-    </div>
+    
 
 </div>
 
-<div class="attendees">
+<div class="attendees container p-5">
         <h3>List of attendees</h3>
         <div class="list-attendees">
             
