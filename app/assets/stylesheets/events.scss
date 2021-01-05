@@ -4,7 +4,7 @@
 
 .grid-post {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     padding: 3rem;
     grid-gap: 10px;
 
@@ -60,4 +60,16 @@
     p {
         font-size: 16px;
     }
+}
+
+.main-event {
+
+  .left {
+    border: 3px solid #ccc;
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(76, 68, 68, 0.2);
+    transition: 0.3s;
+
+  }
 }

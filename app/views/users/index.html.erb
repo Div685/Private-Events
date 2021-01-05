@@ -1,17 +1,21 @@
 
-<%= @event.title %>
-<br />
-<% @users.each do |user| %>
-    <tr>
-    <td><%= user.name %></td>
-    <td>
-        <% if invited?(user, @event.id) && attended?(user, @event.id) %>
-         <p>Invitation accepted</p>
-        <% elsif invited?(user, @event.id) && attended?(user, @event.id) != true %>
-        <%= link_to "Cancel invitation", cancel_path(user_id: user.id, event_id: @event.id), class: "p-2 text-center bg-white rounded nav-link border border-danger text-danger" %>
-        <% else %>
-        <%= link_to "Invite", invite_path(user_id: user.id, event_id: @event.id), class: "p-2 text-center bg-white rounded nav-link blue-oschool" %>
-        <% end %>
-    </td>
-    </tr>
-<% end %>
+<div class="main-invite container-fluid p-3 m-3">   
+    <h2>Invite User for the <span class="text-primary"><%= @event.title %> </span> Event!!</h2>
+</div>
+<div class="p-3 m-3 align-item-center">
+    <% @users.each do |user| %>
+        <div>
+            <%= user.name %></td>
+        </div>
+        <div>
+            <% if invited?(user, @event.id) && attended?(user, @event.id) %>
+            <p>Invitation accepted</p>
+            <% elsif invited?(user, @event.id) && attended?(user, @event.id) != true %>
+            <%= link_to "Cancel invitation", cancel_path(user_id: user.id, event_id: @event.id), class: " text-center bg-white rounded nav-link border border-danger text-danger" %>
+            <% else %>
+            <%= link_to "Invite", invite_path(user_id: user.id, event_id: @event.id), class: "btn btn-primary text-center rounded nav-link blue-oschool" %>
+            <% end %>
+        </div>
+        
+    <% end %>
+</div>
