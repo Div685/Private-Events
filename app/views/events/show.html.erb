@@ -19,7 +19,11 @@
             <% if current_user == @event.creator %>
                 <%= link_to "Invite People", attendances_path(event_id: @event.id), class: "btn btn-primary text-uppercase" %>
             <% else %>
-                <%= link_to "Join Event", attendances_path(event_id: @event.id), class: "btn btn-primary text-uppercase" %>
+                <% if @is_attendy %>
+                    <%= link_to "Withdraw", attendances_path(event_id: @event_id), class: "btn btn-primary text-uppercase" %>
+                <% else %>
+                    <%= link_to "Join Event", attendances_path(event_id: @event.id), class: "btn btn-primary text-uppercase" %>
+                <% end %>
             <% end %>
         </div>
     </div>

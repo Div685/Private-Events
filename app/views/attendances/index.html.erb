@@ -1,2 +1,16 @@
-<h1>Attendances#index</h1>
-<p>Find me in app/views/attendances/index.html.erb</p>
+<div class="banner">
+    Invite users To Attend Event
+</div>
+<div class="main-users bg-light">
+
+    <% @users.each do |user| %>
+    <div class="d-flex  text-capitalize">
+        <div class="user">
+            <%= user.name %>
+        </div>
+        <div class="button">
+            <%= link_to "Invite User",root_path,  class: "invite-button" %>
+        </div>
+    </div>
+    <% end %>
+</div>

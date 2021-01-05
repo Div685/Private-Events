@@ -26,7 +26,9 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @attendees = User.find(@event.attendances.invited.map(&:user_id))
+    @invitees = User.find(@event.attendances.invited.map(&:user_id))
+    @attendies = User.find(@event.attendances.accepted.map(&:user_id))
+    @is_attendy = current_user.attendances.accepted.select { |obj| obj[:event_id] == @event.id }.any?
   end
 
 
