@@ -16,7 +16,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to current_user, notice: 'Event was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Event was successfully created.' }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -26,9 +26,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @invitees = User.find(@event.attendances.invited.map(&:user_id))
-    @attendies = User.find(@event.attendances.accepted.map(&:user_id))
-    @is_attendy = current_user.attendances.accepted.select { |obj| obj[:event_id] == @event.id }.any?
+    @attendances = Attendance.where('status = ?', true).where('attended_event_id = ?', @event.id)
   end
 
 

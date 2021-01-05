@@ -1,6 +1,6 @@
 class Attendance < ApplicationRecord
-  belongs_to :attendee, class_name: 'user'
-  belongs_to :attended_event, class_name: 'event'
+  belongs_to :attendee, class_name: 'User'
+  belongs_to :attended_event, class_name: 'Event'
 
-  enum status: { invited: 0, accepted: 1}
+  # enum status: { invited: 0, accepted: 1}/
 end

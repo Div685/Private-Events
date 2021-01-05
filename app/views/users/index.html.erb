@@ -1,7 +1,17 @@
+
+<%= @event.title %>
+<br />
 <% @users.each do |user| %>
     <tr>
     <td><%= user.name %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td>
+        <% if invited?(user, @event.id) && attended?(user, @event.id) %>
+         <p>Invitation accepted</p>
+        <% elsif invited?(user, @event.id) && attended?(user, @event.id) != true %>
+        <%= link_to "Cancel invitation", cancel_path(user_id: user.id, event_id: @event.id), class: "p-2 text-center bg-white rounded nav-link border border-danger text-danger" %>
+        <% else %>
+        <%= link_to "Invite", invite_path(user_id: user.id, event_id: @event.id), class: "p-2 text-center bg-white rounded nav-link blue-oschool" %>
+        <% end %>
+    </td>
     </tr>
 <% end %>

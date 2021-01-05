@@ -10,4 +10,14 @@ class ApplicationController < ActionController::Base
     redirect_to '/sign_in' unless current_user
   end
 
+  def invited?(user, event)
+    user.attended_events.exists?(event)
+  end
+  helper_method :invited?
+
+  def attended?(user, event)
+    user.attendances.where('attended_event_id = ?', event).first.status
+  end
+  helper_method :attended?
+
 end

@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
-  before_action :set_user, Only: [:show, :edit, :update,:destroy]
+  before_action :set_user, only: [:show, :edit, :update,:destroy]
+  before_action :logged_in?, only: [:attend_events, :withdraw_events, :invite_user, :cancel_invite_user]
 
   def index
-    @users = User.all
-    @current_user = session['current_user']
+    @users = User.where('id != ?', current_user.id).order('name ASC')
+    @event = Event.find(params[:event_id])
+    # @current_user = session['current_user']
   end
 
   def new
@@ -34,6 +36,42 @@ class UsersController < ApplicationController
     @past = Event.past.select do |event|
       event.attendances.where('status = ?', true).where('attendee_id = ?', @user.id)
     end
+  end
+
+  def attend_events
+    @user = User.find(params[:user_id])
+    @event = Event.find(params[:event_id])
+    @attendance = @user.attendances.where('attended_event_id = ?', @event.id).first
+    @attendance.status = true
+    @attendance.save
+    flash.notice = 'Invitation Accepted!'
+    redirect_to '/'
+  end
+
+  def withdraw_events
+    @user = User.find(params[:user_id])
+    @event = Event.find(params[:event_id])
+    @attendance = @user.attendances.where('attended_event_id = ?', @event.id).first
+    @attendance.status = false
+    @attendance.save
+    flash.notice = 'Event Cancelled!'
+    redirect_to '/'
+  end
+
+  def invite_user
+    @user = User.find(params[:user_id])
+    @event = Event.find(params[:event_id])
+    @user.attendances.create(attended_event: @event)
+    flash.notice = "Invitation sent to #{@user.name} !"
+    redirect_to "/inviteUsers/#{@event.id}"
+  end
+
+  def cancel_invite_user
+    @user = User.find(params[:user_id])
+    @event = Event.find(params[:event_id])
+    @user.attended_events.delete(@event)
+    flash.notice = "Invitation cancelled for #{@user.name} !"
+    redirect_to "/inviteUsers/#{@event.id}"
   end
 
   private

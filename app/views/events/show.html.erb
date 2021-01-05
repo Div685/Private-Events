@@ -16,17 +16,16 @@
         </div>
 
         <div class="join-event">
-            <!-- <% if current_user == @event.creator %>
-                <%= link_to "Invite People", attendances_path(event_id: @event.id), class: "btn btn-primary text-uppercase" %>
-            <% else %>
-                <% if @is_attendy %>
-                    <%= link_to "Withdraw", attendances_path(event_id: @event_id), class: "btn btn-primary text-uppercase" %>
-                <% else %>
-                    <%= link_to "Join Event", attendances_path(event_id: @event.id), class: "btn btn-primary text-uppercase" %>
-                <% end %>
-            <% end %> -->
 
-            <%= invite_people %>
+            <% if current_user && current_user.events.exists?(@event.id) %>
+              <%= link_to "Invite people", inviteUsers_path(@event), class: " p-2 text-center bg-white rounded nav-link blue-oschool" %>
+              <% elsif current_user && invited?(current_user, @event.id) && attended?(current_user, @event.id) %>
+              <%= link_to "Withdraw", withdraw_path(user_id: current_user.id, event_id: @event.id), class: " btn btn-primary p-2 text-center rounded " %>
+              <% elsif current_user && invited?(current_user, @event.id) && attended?(current_user, @event.id) != true %>
+              <%= link_to "You have been invited. Accept Invitation", attend_path(user_id: current_user.id, event_id: @event.id), class: "btn btn-primary p-2 text-center rounded" %>
+              <% else %>
+              <p>You must be invited to attend this event</p>
+              <% end %>
         </div>
     </div>
 
@@ -52,7 +51,14 @@
 <div class="attendees container p-5">
         <h3>List of attendees</h3>
         <div class="list-attendees">
-            
+           <ul>
+           
+            <% @attendances.each do |attend| %>
+            <li> 
+                <%= link_to attend.attendee.name, user_path(attend.attendee), class: "text-dark" %>
+            </li>
+            <% end %>
+           </ul>
         </div>
     </div>
 
