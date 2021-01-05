@@ -16,7 +16,7 @@
         </div>
 
         <div class="join-event">
-            <% if current_user == @event.creator %>
+            <!-- <% if current_user == @event.creator %>
                 <%= link_to "Invite People", attendances_path(event_id: @event.id), class: "btn btn-primary text-uppercase" %>
             <% else %>
                 <% if @is_attendy %>
@@ -24,7 +24,9 @@
                 <% else %>
                     <%= link_to "Join Event", attendances_path(event_id: @event.id), class: "btn btn-primary text-uppercase" %>
                 <% end %>
-            <% end %>
+            <% end %> -->
+
+            <%= invite_people %>
         </div>
     </div>
 
