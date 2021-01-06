@@ -1,21 +1,21 @@
-
-<div class="main-invite container-fluid p-3 m-3">   
+<div class="main-invite container-fluid p-3 d-flex justify-content-center">
     <h2>Invite User for the <span class="text-primary"><%= @event.title %> </span> Event!!</h2>
 </div>
-<div class="p-3 m-3 align-item-center">
+<div class=" user-invitation p-3 align-item-center bg-light w-50">
     <% @users.each do |user| %>
-        <div>
-            <%= user.name %></td>
+        <div class="d-flex p-3 m-3 align-items-center justify-content-between">
+            <div class="mx-2 font-weight-bold w-25">
+                <%= user.name %></td>
+            </div>
+            <div>
+                <% if invited?(user, @event.id) && attended?(user, @event.id) %>
+                    <p class="font-weight-bold text-success py-1 px-4">Invitation accepted</p>
+                <% elsif invited?(user, @event.id) && attended?(user, @event.id) != true %>
+                    <%= link_to "Cancel invitation", cancel_path(user_id: user.id, event_id: @event.id), class: " py-1 px-4 text-center rounded nav-link border border-danger text-danger" %>
+                <% else %>
+                    <%= link_to "Invite", invite_path(user_id: user.id, event_id: @event.id), class: "btn btn-primary text-center rounded nav-link py-1 px-4" %>
+                <% end %>
+            </div>
         </div>
-        <div>
-            <% if invited?(user, @event.id) && attended?(user, @event.id) %>
-            <p>Invitation accepted</p>
-            <% elsif invited?(user, @event.id) && attended?(user, @event.id) != true %>
-            <%= link_to "Cancel invitation", cancel_path(user_id: user.id, event_id: @event.id), class: " text-center bg-white rounded nav-link border border-danger text-danger" %>
-            <% else %>
-            <%= link_to "Invite", invite_path(user_id: user.id, event_id: @event.id), class: "btn btn-primary text-center rounded nav-link blue-oschool" %>
-            <% end %>
-        </div>
-        
     <% end %>
 </div>
