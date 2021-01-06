@@ -19,5 +19,4 @@ class ApplicationController < ActionController::Base
     user.attendances.where('attended_event_id = ?', event).first.status
   end
   helper_method :attended?
-
 end

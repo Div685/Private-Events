@@ -3,73 +3,71 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 .grid-post {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 3rem;
-    grid-gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 3rem;
+  grid-gap: 10px;
 
-    .box {
-        box-shadow: 0 4px 8px 0 rgba(76, 68, 68, 0.2);
-        transition: 0.3s;
-      }
-    
-      .box:hover {
-        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-        cursor: pointer;
-      }
+  .box {
+    box-shadow: 0 4px 8px 0 rgba(76, 68, 68, 0.2);
+    transition: 0.3s;
+  }
 
-      .post-body {
-        font-size: 14px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 5;
-        -webkit-box-orient: vertical;
-        text-align: justify;
-      }
+  .box:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
 
-      .post-title {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          display: -webkit-box;
-          -webkit-line-clamp: 1;
-          -webkit-box-orient: vertical;
-          text-align: justify;
-      }
+  .post-body {
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    text-align: justify;
+  }
+
+  .post-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-align: justify;
+  }
 }
 
 .img-show {
-    height: 50vh;
+  height: 50vh;
 }
 
 .text {
-    font-size: 16px;
-    line-height: 1.5;
-    text-align: justify;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: justify;
 }
 
 .date {
-    span {
-      font-size: 20px;
-      
-      i {
-        color: rgb(5, 115, 0);
-      }
-    }
+  span {
+    font-size: 20px;
 
-    p {
-        font-size: 16px;
+    i {
+      color: rgb(5, 115, 0);
     }
+  }
+
+  p {
+    font-size: 16px;
+  }
 }
 
 .main-event {
-
   .left {
     border: 3px solid #ccc;
     border-radius: 10px;
     padding: 1rem;
     box-shadow: 0 4px 8px 0 rgba(76, 68, 68, 0.2);
     transition: 0.3s;
-
   }
 }

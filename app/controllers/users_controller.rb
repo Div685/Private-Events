@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update,:destroy]
-  before_action :logged_in?, only: [:attend_events, :withdraw_events, :invite_user, :cancel_invite_user]
+  before_action :set_user, only: %i[show edit update destroy]
+  before_action :logged_in?, only: %i[attend_events withdraw_events invite_user cancel_invite_user]
 
   def index
     @users = User.where('id != ?', current_user.id).order('name ASC')
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       if @user.save
         session[:current_user_id] = @user.id
         format.html { redirect_to @user, notice: 'User was Successfully created' }
-        format.json { render :show, status: :created,  location: @user }
+        format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -77,13 +77,10 @@ class UsersController < ApplicationController
   private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_user
-    
-  end
+  def set_user; end
 
   # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:name)
   end
-
 end

@@ -29,11 +29,9 @@ class EventsController < ApplicationController
     @attendances = Attendance.where('status = ?', true).where('attended_event_id = ?', @event.id)
   end
 
-
   private
 
   def event_params
     params.require(:event).permit(:title, :description, :date, :location, :creator_id)
   end
-
 end
