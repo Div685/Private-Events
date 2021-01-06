@@ -15,8 +15,8 @@
   <div aria-labelledby="nav-profile-tab">
         <h3 class="h5 text-capitalize">Upcoming Events</h3>
               <% @upcoming.each do |event| %>
-                <div class="d-flex flex-column">
-                  <%= link_to event.title, event_path(event), class: "text-primary font-weight-bold h4 text-decoration-none"  %>
+                <div class="d-flex flex-column my-3">
+                  <%= link_to event.title, event_path(event), class: "text-primary font-weight-bold h5 text-decoration-none"  %>
                   <span class="text-uppercase text-danger mt-n2"><%= event.date %></span>
                 </div>                    
               <% end %>
@@ -26,10 +26,11 @@
    <div aria-labelledby="nav-profile-tab border-top">
         <h3 class="h5 text-capitalize">past Events</h3>
               <% @past.each do |event| %>
-               
-                      <span class="text-uppercase text-danger"><%= event.date %></span>
-    
-                        <%= link_to event.title, event_path(event), class: "text-dark" %>
+                    <div class="d-flex flex-column my-3">
+                        <%= link_to event.title, event_path(event), class: "text-primary font-weight-bold h5 text-decoration-none" %>
+
+                      <span class="text-uppercase text-danger mt-n2"><%= event.date %></span>
+                      </div>
               <% end %>
   </div>
 

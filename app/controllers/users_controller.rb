@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   def index
     @users = User.where('id != ?', current_user.id).order('name ASC')
     @event = Event.find(params[:event_id])
-    # @current_user = session['current_user']
   end
 
   def new
