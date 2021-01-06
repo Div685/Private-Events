@@ -1,6 +1,6 @@
 # Private-Events
 
-![screenshot](Screenshot.png)
+![screenshot](screencapture.png)
 
 ## About the Project
 

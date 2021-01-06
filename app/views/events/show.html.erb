@@ -35,10 +35,10 @@
                 <div class="list-attendees text-primary">
                     <ul class="list-unstyled mt-1">
                             <% @attendances.each do |attend| %>
-                            <li> 
-                                <%= link_to attend.attendee.name, user_path(attend.attendee), class: "text-primary text-capitalize h5" %>
-                                <hr>
-                            </li>
+                                <li> 
+                                    <%= link_to attend.attendee.name, user_path(attend.attendee), class: "text-primary text-capitalize h5" %>
+                                    <hr>
+                                </li>
                             <% end %>
                     </ul>
                 </div>
