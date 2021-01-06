@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe Event, :type => :model do
-  subject {
-    described_class.new(title: "",
-                        description: "",
+RSpec.describe Event, type: :model do
+  subject do
+    described_class.new(title: '',
+                        description: '',
                         date: DateTime.now,
-                        location: "" )
-  }
+                        location: '')
+  end
 
   describe 'Validations' do
     it 'is valid for the validation control' do
@@ -31,7 +31,7 @@ RSpec.describe Event, :type => :model do
 
   describe 'Associations' do
     it { should belong_to(:creator).class_name(:User) }
-    it { should have_many(:attendances).with_foreign_key(:attended_event_id)}
-    it { should have_many(:attendees).through(:attendances).class_name(:User)}
+    it { should have_many(:attendances).with_foreign_key(:attended_event_id) }
+    it { should have_many(:attendees).through(:attendances).class_name(:User) }
   end
 end

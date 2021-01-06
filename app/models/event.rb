@@ -7,5 +7,5 @@ class Event < ApplicationRecord
   scope :past, -> { where('date < ?', Date.today) }
 
   validates :title, length: { minimum: 3, maximum: 90 }
-  validates_presence_of  :title, :description, :date, :location
+  validates_presence_of :title, :description, :date, :location
 end
