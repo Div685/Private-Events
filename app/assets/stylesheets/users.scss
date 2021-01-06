@@ -7,3 +7,16 @@
     width: 300px;
     border-radius: 50%;
 }
+
+.user-invitation {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+    margin: 0 auto;
+    box-shadow: 10px 10px 10px #aaa;
+}
+
+.main-invite {
+    margin: 16px auto;
+    text-transform: uppercase;
+}
