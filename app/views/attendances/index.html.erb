@@ -4,23 +4,8 @@
 <div class="main-users bg-light">
 
     <% @users.each do |user| %>
-    <% invite = Attendance.find_by(attended_event_id: params[:attended_event_id], attendee_id: user.id) %>
-    <div class="d-flex  text-capitalize">
-        <div class="user">
-            <%= user.name %>
-             <% unless invite.nil? || invite.status.nil? %>
-                <small class="status green"><%= invite.status %></small>
-              <% else %>
-                <small class="status">---</small>
-              <% end %>
-        </div>
-        <div class="d-flex">
-            <%- if invite.nil? %>
-              <%= button_to "Invite", attendances_path(attended_event_id: params[:attended_event_id], user_id: user.id), class: "button is-primary is-small" %>
-            <% else %>
-              <%= button_to "Cancel Invitation", attendances_path(id: invite.id, attended_event_id: params[:attended_event_id]), method: :delete, class: "button cancel is-primary is-small" %>  
-            <% end %>
-          </div>
-    </div>
+    <ul>
+    <li><%= user.name %></li>
+    </ul>
     <% end %>
 </div>
