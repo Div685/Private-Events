@@ -2,6 +2,17 @@
     <h1 class="text-primary font-weight-bold">Sign Up</h1>
     <div class="login-field">
         <%= form_with model: @user, local: true do |f| %>
+            <% if @user.errors.any? %>
+                <div id="error_explanation">
+                    <h4 class="text-danger text-center"><%= pluralize(@user.errors.count, "error") %> Error occured:</h4>
+
+                    <ul>
+                        <% @user.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            <% end %>
             <div class="form-group">
                 <%= f.label :name, class: "form_label" %>
                 <%= f.text_field :name, class: "form-control", placeholder: 'User Name'   %>

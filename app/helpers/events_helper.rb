@@ -1,18 +1,19 @@
 module EventsHelper
-  def invite_people
-    if current_user == @event.creator
+  def invitation_people
+    accept = 'You have been invited. Accept Invitation'
+    if current_user && current_user.events.exists?(@event.id)
       content_tag(:div,
-                  link_to('Invite People', attendances_path(event_id: @event.id),
-                          class: 'btn btn-primary text-uppercase'))
-
-    elsif @is_attendy
+                  link_to('Invite people', inviteUsers_path(@event), class: 'btn btn-primary p-2 text-center rounded'))
+    elsif current_user && invited?(current_user, @event.id) && attended?(current_user, @event.id)
       content_tag(:div,
-                  link_to('Withdraw', attendances_path(event_id: @event.id), method: :patch,
-                                                                             class: 'btn btn-primary text-uppercase'))
+                  link_to('Withdraw', withdraw_path(user_id: current_user.id, event_id: @event.id),
+                          class: 'btn btn-primary p-2 text-center rounded'))
+    elsif current_user && invited?(current_user, @event.id) && attended?(current_user, @event.id) != true
+      content_tag(:div,
+                  link_to(accept.to_s, attend_path(user_id: current_user.id, event_id: @event.id),
+                          class: 'btn btn-primary p-2 text-center rounded'))
     else
-      content_tag(:div,
-                  link_to('Join Event', attendances_path(event_id: @event.id), method: :patch,
-                                                                               class: 'btn btn-primary text-uppercase'))
+      content_tag(:p, 'You must be invited to attend this Event', class: 'text-danger')
     end
   end
 end

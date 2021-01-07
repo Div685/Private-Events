@@ -40,10 +40,10 @@
 
 <div class="created-event clearfix float-left col-7 p-3 m-3 bg-light">
     <h1 class="text-uppercase text-primary ml-5 mb-n3 h3 font-weight-bold">Created Events</h1>
-        
+        <div class="grid-post">
         <% if @created_event.any? %>
             <% @created_event.each do |e| %>
-              <div class="grid-post">
+              
                   <div class="card box"> 
                       <div class="card-body">
                           <div class="card-title">
@@ -54,12 +54,13 @@
                           </div>
                       </div>
                   </div>
-              </div>
+              
             <% end %>
         <% else %>
             <div class="d-flex flex-column p-3 m-3">
                 <p>User has Not Created any Events</p>
-                <%= link_to "Create Event", new_event_path, class: "btn btn-primary w-25"  %>
+                <%= link_to "Create Event", new_event_path, class: "btn btn-primary w-75"  %>
             </div>
         <% end %>
+        </div>
 </div>

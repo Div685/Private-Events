@@ -17,16 +17,7 @@
             </div>
 
             <div class="join-event">
-
-                <% if current_user && current_user.events.exists?(@event.id) %>
-                    <%= link_to "Invite people", inviteUsers_path(@event), class: "btn btn-primary p-2 text-center rounded" %>
-                <% elsif current_user && invited?(current_user, @event.id) && attended?(current_user, @event.id) %>
-                    <%= link_to "Withdraw", withdraw_path(user_id: current_user.id, event_id: @event.id), class: " btn btn-primary p-2 text-center rounded " %>
-                <% elsif current_user && invited?(current_user, @event.id) && attended?(current_user, @event.id) != true %>
-                    <%= link_to "You have been invited. Accept Invitation", attend_path(user_id: current_user.id, event_id: @event.id), class: "btn btn-primary p-2 text-center rounded" %>
-                <% else %>
-                    <p class="text-danger">You must be invited to attend this event</p>
-                <% end %>
+                <%= invitation_people %>
             </div>
         </div>
 

@@ -5,7 +5,7 @@ example_id                             | status | run_time        |
 ./spec/attendance_spec.rb[1:2:1:1]     | passed | 0.00493 seconds |
 ./spec/attendance_spec.rb[1:2:2:1]     | passed | 0.00838 seconds |
 ./spec/attendance_spec.rb[1:2:3]       | passed | 0.09583 seconds |
-./spec/controller/event_spec.rb[1:1:1] | passed | 10.21 seconds   |
+./spec/controller/event_spec.rb[1:1:1] | passed | 18.67 seconds   |
 ./spec/controller/user_spec.rb[1:1:1]  | passed | 7.9 seconds     |
 ./spec/controller/user_spec.rb[1:2:1]  | passed | 1.08 seconds    |
 ./spec/event_spec.rb[1:1:1]            | passed | 0.0076 seconds  |
