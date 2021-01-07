@@ -1,3 +1,7 @@
+# rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/PerceivedComplexity
+# rubocop:disable Style/SafeNavigation
+
 module EventsHelper
   def invitation_people
     accept = 'You have been invited. Accept Invitation'
@@ -17,3 +21,7 @@ module EventsHelper
     end
   end
 end
+
+# rubocop:enable Metrics/CyclomaticComplexity
+# rubocop:enable Metrics/PerceivedComplexity
+# rubocop:enable Style/SafeNavigation
