@@ -6,6 +6,9 @@
 
 This is a private-events project using Ruby on Rails.  This project is a building of a private EventBrite which allows users to create events and then manage user signups. Users can create events and send invitations and parties. Events take place at a specific date and at a location.
 
+## Live Demo
+Checkout the live demo at [Live](https://stark-springs-82794.herokuapp.com/)
+
 ### Built With
 
 - [Rails](https://guides.rubyonrails.org/)
