@@ -33,6 +33,13 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'database_cleaner'
   gem 'rspec-rails'
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3', '~> 1.4'
+end
+
+group :production do
+  # Use postgres as the database for Active Record
+  gem 'pg'
 end
 
 group :development do
